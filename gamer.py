@@ -12,6 +12,7 @@ class Gamer(Player):  # Класс это "чертеж" для создания
         self.sprites = sprites
         self.shot = 0
         self.bot = bot
+        self.bullets = []
 #        self.game_over = 0
 
     def update(self, *args, **kwargs) -> None:  # Заглушка, будет риолизовано в бот и геймер.
@@ -24,8 +25,10 @@ class Gamer(Player):  # Класс это "чертеж" для создания
             self.rect.x += self.speed
             if self.rect.right >= self.width:
                 self.rect.right = self.width
-        if keys[pygame.K_UP]:
-            if not self.shot:
-
-                self.sprites.add(Bullet(self.width, self.height, self))
-                self.shot = 1
+            if keys[pygame.K_UP]:
+                bullet = Bullet(self.width, self.height, self)
+                self.bullets.append(bullet)
+                self.sprites.add(bullet)
+#            if not self.shot:
+#                self.sprites.add(Bullet(self.width, self.height, self))
+#                self.shot = 1
