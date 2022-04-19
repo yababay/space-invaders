@@ -1,20 +1,26 @@
 import pygame
+from pygame.sprite import Sprite
+from pygame import Surface
+from settings import *
 
-PLAYER_WIDTH = 50
-PLAYER_HEIGHT = 50
-DEFAULT_SPEED = 5
 
+class Player(Sprite):  # Класс это "чертеж" для создания множества однотипных объектов.
 
-class Player(pygame.sprite.Sprite):  # Класс это "чертеж" для создания множества однотипных объектов.
-
-    def __init__(self, color, width, height, speed=DEFAULT_SPEED, player_width=PLAYER_WIDTH,
-                 player_height=PLAYER_HEIGHT):  # Конструктор. Вызывается при создании нового объекта.
-        pygame.sprite.Sprite.__init__(self)   # Наш класс расширяет класс Sprite (является наследником)
-        self.image = pygame.Surface((player_width, player_height))
-        self.image.fill(color)
-        self.rect = self.image.get_rect()
-        self.width = width
-        self.height = height
+    def __init__(self, space, image=None,
+                 speed=PLAYER_DEFAULT_SPEED,
+                 width=PLAYER_DEFAULT_WIDTH,
+                 height=PLAYER_DEFAULT_HEIGHT,
+                 color=PLAYER_DEFAULT_COLOR):  # Конструктор. Вызывается при создании нового объекта.
+        Sprite.__init__(self)   # Наш класс расширяет класс Sprite (является наследником)
+        if image:
+            image = pygame.image.load(f'assets/bots/{image}.png')
+            self.image = image
+        else:
+            image = Surface((width, height))
+            image.fill(color)
+            self.image = image
+        self.rect = image.get_rect()
+        self.space = space
         self.speed = speed
 
     def update(self, *args, **kwargs) -> None:
