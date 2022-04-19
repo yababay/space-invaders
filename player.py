@@ -13,6 +13,7 @@ class Player(Sprite):  # Класс это "чертеж" для создани�
                  color=PLAYER_DEFAULT_COLOR):  # Конструктор. Вызывается при создании нового объекта.
         Sprite.__init__(self)   # Наш класс расширяет класс Sprite (является наследником)
         if image:
+            self.type = image
             image = pygame.image.load(f'assets/bots/{image}.png')
             self.image = image
         else:

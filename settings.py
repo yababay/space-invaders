@@ -3,13 +3,13 @@ from datetime import timedelta
 GAME_WIDTH = 400
 GAME_HEIGHT = 800
 GAME_DELAY = 100
-GAME_TITLE = 'Пришельцы из космоса'
 GAME_BETWEEN_ALIENS = timedelta(seconds=5)
 GAME_SUCCESS_COLOR = (0, 255, 0)
 GAME_FAILURE_COLOR = (255, 0, 0)
 GAME_SUCCESS_TEXT = 'Congrats!'
 GAME_FAILURE_TEXT = 'Sorry...'
 GAME_MAX_DOWNED_COUNT = 5
+GAME_TITLE = f'Сбей {GAME_MAX_DOWNED_COUNT} пришельцев'
 
 BACKGROUND_IMAGE = 'assets/space.png'
 BACKGROUND_SPEED = 3
@@ -20,6 +20,7 @@ PLAYER_DEFAULT_COLOR = (0, 255, 0)
 PLAYER_DEFAULT_SPEED = 5
 
 ALIEN_DEFAULT_SPEED = 5
+ALIEN_IMAGES = ['purple', 'golden', 'navy', 'orange', 'brown']
 ALIEN_DEFAULT_IMAGE = 'purple'
 
 GAMER_DEFAULT_SPEED = 10

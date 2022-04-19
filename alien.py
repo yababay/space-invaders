@@ -8,10 +8,15 @@ def get_random_x():
     return random.randint(0, GAME_WIDTH - PLAYER_DEFAULT_WIDTH)
 
 
+def get_random_color():
+    n = random.randint(0, len(ALIEN_IMAGES) - 1)
+    return random.choice(ALIEN_IMAGES)
+
+
 class Alien(Player):
 
-    def __init__(self, space, image=ALIEN_DEFAULT_IMAGE, speed=ALIEN_DEFAULT_SPEED):
-        Player.__init__(self, space, image, speed)
+    def __init__(self, space, speed=ALIEN_DEFAULT_SPEED):
+        Player.__init__(self, space, get_random_color(), speed)
         self.rect.bottom = 0
         self.rect.x = get_random_x()
 
